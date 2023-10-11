@@ -10,7 +10,7 @@
 #include <DFRobotDFPlayerMini.h>
 
 #include <Adafruit_GFX.h>
-#include <FreeSans12pt7b.h>
+#include <Font/FreeSans12pt7b.h>
 
 void drawSettingsMenu();
 void drawSprite(TFT_eSprite *sprite);
