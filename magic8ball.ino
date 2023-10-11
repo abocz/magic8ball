@@ -9,12 +9,8 @@
 #include <HardwareSerial.h>
 #include <DFRobotDFPlayerMini.h>
 
-#define FONT_14
-#ifdef FONT_14
-#include "FontsRus/FreeSans14.h"
-#else
-#include "FontsRus/FreeSans12.h"
-#endif
+#include <Adafruit_GFX.h>
+#include <FreeSans12pt7b.h>
 
 void drawSettingsMenu();
 void drawSprite(TFT_eSprite *sprite);
@@ -220,11 +216,8 @@ void setup()
     // Create sprite
     mainSprite.createSprite(w, w);
     mainSprite.setTextColor(TFT_WHITE);
-#ifdef FONT_14    
-    mainSprite.setFreeFont(&FreeSans14pt8b);
-#else
-    mainSprite.setFreeFont(&FreeSans12pt8b);
-#endif    
+    //set font
+    mainSprite.setFreeFont(&FreeSans12pt7b);   
     mainSprite.setAttribute(UTF8_SWITCH, false);
 
     // We should start from "intro" message
