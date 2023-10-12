@@ -449,7 +449,13 @@ void turnDisplay(bool isOn)
         gpio_hold_en(GPIO_NUM_13);
     }
     // Set clock
-    rtc_clk_cpu_freq_set(isOn ? RTC_CPU_FREQ_240M : RTC_CPU_FREQ_80M);
+    // rtc_clk_cpu_freq_set(isOn ? RTC_CPU_FREQ_240M : RTC_CPU_FREQ_80M);
+    // checkInputInterval = isOn ? INPUT_INTERVAL : 2;
+    // set clock using new api
+    rtc_cpu_freq_config_t config;
+    rtc_clk_cpu_freq_get_config(&config);
+    rtc_clk_cpu_freq_to_config(isOn ? RTC_CPU_FREQ_240M : RTC_CPU_FREQ_80M, &config);
+    rtc_clk_cpu_freq_set_config_fast(&config);
     checkInputInterval = isOn ? INPUT_INTERVAL : 2;
 
     if (isOn) startHideTime = millis();
